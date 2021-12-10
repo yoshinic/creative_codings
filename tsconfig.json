@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "commonjs",
+    "sourceMap": true,
+    "target": "ES2015", // TSはECMAScript 2015に変換
+    "module": "ES2015", // TSのモジュールはES Modulesとして出力
     "outDir": "./build",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
