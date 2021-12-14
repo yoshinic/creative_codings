@@ -1,55 +1,20 @@
 import "./sass/style.scss";
 import p5 from "p5";
 
-let r: number;
-let x: number;
-const a: string[] = [
-  "😀",
-  "😃",
-  "😄",
-  "😁",
-  "😆",
-  "😅",
-  "😂",
-  "🤣",
-  "🥲",
-  "😊",
-  "😇",
-];
-let i: number = 0;
-
-const width = screen.width;
-const height = screen.height;
-
-// TypeScript
 const sketch = (p: p5) => {
+  /** 初期化処理 */
   p.setup = () => {
-    p.createCanvas(width, height);
-
-    r = Math.min(width, height) / 10;
-    x = r;
+    p.createCanvas(p.windowWidth, p.windowHeight);
+    p.background("#131821"); // 背景色を設定
   };
 
+  /** フレームごとの描画処理 */
   p.draw = () => {
-    p.clear();
-
-    if (x % 100 === 0) {
-      if (i === a.length - 1) {
-        i = 0;
-      } else {
-        i++;
-      }
+    if (p.frameCount % 50 === 0) {
+      p.strokeWeight(p.random(30, 80));
+      p.stroke(p.random(180, 255), p.random(180, 255), p.random(180, 255));
+      p.circle(p.width / 2, p.height / 2, p.random(50, 300));
     }
-    p.text(`${a[i]} 🎉🎉🎉`, x, 100);
-    p.textFont("monospace", 80);
-
-    x += 5;
-    if (x > width + r) {
-      x = -r;
-    }
-
-    p.fill(204, 102, 0);
-    p.circle(x, height / 2, r * 2);
   };
 };
 
